@@ -69,6 +69,7 @@ allow qti_init_shell {
     qti_prop
     ctl_rildaemon_prop
     uicc_prop
+    ctl_charger_prop
     ctl_qmuxd_prop
     ctl_netmgrd_prop
     ctl_port-bridge_prop
@@ -153,3 +154,7 @@ allow qti_init_shell cgroup:dir add_name;
 
 # To allow copy for mbn files
 r_dir_file(qti_init_shell, firmware_file)
+
+# For charger_monitor
+allow qti_init_shell sysfs_battery_supply:dir r_dir_perms;
+allow qti_init_shell sysfs_battery_supply:file { r_file_perms setattr };
