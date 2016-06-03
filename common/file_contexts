@@ -75,6 +75,8 @@
 /dev/block/bootdevice/by-name/dip               u:object_r:dip_device:s0
 /dev/block/bootdevice/by-name/mdtp              u:object_r:mdtp_device:s0
 
+/dev/stm_sensor                                 u:object_r:stm_sensor_device:s0
+
 ###################################
 # Dev socket nodes
 #
@@ -219,6 +221,7 @@
 /system/bin/mcStarter                           u:object_r:mcStarter_exec:s0
 /system/bin/fstman                              u:object_r:fstman_exec:s0
 /system/vendor/bin/mdtp_service                 u:object_r:mdtpdaemon_exec:s0
+/system/bin/laser_init   u:object_r:sensors_exec:s0
 
 ###################################
 # sysfs files
@@ -263,6 +266,11 @@
 /sys/bus/msm_subsys/devices/subsys4/restart_level                   u:object_r:sysfs_ssr_toggle:s0
 /sys/devices/soc0/.*                                                u:object_r:sysfs_socinfo:s0
 
+/sys/devices/soc.0/fda0c000.qcom,cci/29.qcom,proximity/enable_ps_sensor                  u:object_r:sysfs_ps_sensor:s0
+/sys/devices/soc.0/fda0c000.qcom,cci/29.qcom,proximity/set_delay_ms                      u:object_r:sysfs_ps_sensor:s0
+/sys/devices/soc.0/f9928000.i2c/i2c-6/6-0029/enable_ps_sensor                  u:object_r:sysfs_ps_sensor:s0
+/sys/devices/soc.0/f9928000.i2c/i2c-6/6-0029/set_delay_ms                      u:object_r:sysfs_ps_sensor:s0
+
 ###################################
 # data files
 #
@@ -301,6 +309,11 @@
 /data/misc/audio_pp(/.*)?                                           u:object_r:audio_pp_data_file:s0
 /data/ramdump(/.*)?                                                 u:object_r:ssr_ramdump_data_file:s0
 /data/misc/SelfHost/socket(/.*)?                                    u:object_r:RIDL_socket:s0
+
+# Add Fingerprint
+/dev/fpc1020 u:object_r:fpc1020_device:s0
+/data/fpc(/.*)?                        u:object_r:fpc_data_file:s0
+/sys/devices/soc/soc:fpc_fpc1020/irq   u:object_r:sysfs_fpc_irq:s0
 
 ###################################
 # persist files

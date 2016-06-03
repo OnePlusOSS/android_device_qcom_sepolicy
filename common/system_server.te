@@ -120,3 +120,7 @@ allow system_server iqfp_service:service_manager find;
 
 #for seemp
 unix_socket_send(system_server, seempdw, seempd)
+
+allow system_server oem_service:service_manager {add};
+
+allow system_server stm_sensor_device:chr_file rw_file_perms;

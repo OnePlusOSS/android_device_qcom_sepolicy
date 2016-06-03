@@ -51,3 +51,10 @@ allow mm-qcamerad graphics_device:dir r_dir_perms;
 #Allow access to /dev/graphics/fb* for screen capture
 allow mm-qcamerad graphics_device:chr_file rw_file_perms;
 unix_socket_connect(mm-qcamerad, property, init)
+
+allow mm-qcamerad system_file:file execmod;
+
+allow mm-qcamerad mm-qcamerad:tcp_socket { create setopt };
+
+allow mm-qcamerad sysfs_ps_sensor:file rw_file_perms;
+allow mm-qcamerad stm_sensor_device:chr_file r_file_perms;

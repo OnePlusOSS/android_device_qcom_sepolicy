@@ -116,3 +116,5 @@ type avtimer_device, dev_type;
 
 #define AT device
 type at_device, dev_type;
+
+type stm_sensor_device, dev_type;

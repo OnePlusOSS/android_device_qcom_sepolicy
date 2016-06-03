@@ -68,3 +68,9 @@ allow sensors sysfs:file w_file_perms;
 
 #Rules for sensors to talk to peripheral manager
 use_per_mgr(sensors);
+
+allow sensors input_device:dir { search write };
+allow sensors input_device:chr_file { link getattr relabelfrom };
+allow sensors device:dir { add_name write };
+allow sensors security_file:file { read open };
+allow sensors stm_sensor_device:chr_file { relabelto };
