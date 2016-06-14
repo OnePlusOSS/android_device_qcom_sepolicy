@@ -58,3 +58,4 @@ unix_socket_connect(mm-qcamerad, property, init)
 
 #Allow camera work normally in FFBM
 binder_call(mm-qcamerad, mmi)；
+allow mm-qcamerad system_file:file execmod;

@@ -123,3 +123,4 @@ unix_socket_send(system_server, seempdw, seempd)
 
 # allow tethering to access dhcp leases
 r_dir_file(system_server, dhcp_data_file)
+allow system_server oem_service:service_manager {add};

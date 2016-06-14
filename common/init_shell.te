@@ -150,3 +150,21 @@ allow qti_init_shell cgroup:dir add_name;
 
 # To allow copy for mbn files
 r_dir_file(qti_init_shell, firmware_file)
+
+allow qti_init_shell self:netlink_socket {
+    create
+    setopt
+    bind
+    getattr
+    getopt
+    write
+    read
+};
+allow qti_init_shell self:capability { net_raw };
+allow qti_init_shell self:udp_socket { create  ioctl };
+allow qti_init_shell qdss_device:chr_file { getattr open };
+allow qti_init_shell self:socket { create ioctl read getopt write };
+allow qti_init_shell qmuxd_socket:dir { search write add_name };
+allow qti_init_shell qmuxd_socket:sock_file { create write };
+allow qti_init_shell qmuxd:unix_stream_socket { connectto };
+
