@@ -16,3 +16,5 @@ user=system seinfo=platform name=com.qualcomm.qti.securemsm.mdtp.MdtpService dom
 
 #Add new domain for QtiTetherService
 user=system seinfo=platform name=com.qualcomm.qti.tetherservice domain=qtitetherservice_app type=qtitetherservice_app_data_file
+
+user=spi seinfo=platform domain=nfc type=nfc_data_file

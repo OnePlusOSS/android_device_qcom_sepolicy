@@ -26,3 +26,6 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 binder_call(system_app, qvop)
+
+allow platform_app oem_service:service_manager {add} ;
+allow nfc oem_service:service_manager {add} ;
