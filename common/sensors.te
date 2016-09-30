@@ -68,3 +68,6 @@ allow sensors sysfs:file w_file_perms;
 
 #Rules for sensors to talk to peripheral manager
 use_per_mgr(sensors);
+
+allow sensors persist_file:file { getattr read write open create append setattr append };
+allow sensors persist_file:dir { write add_name create setattr };

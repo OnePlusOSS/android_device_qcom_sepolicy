@@ -21,3 +21,4 @@ type izat_service,                system_api_service, service_manager_type;
 type seemp_service,               service_manager_type;
 type mdtpdaemon_service,          service_manager_type;
 type qtitetherservices_service,   service_manager_type;
+type oem_service,                 service_manager_type;
