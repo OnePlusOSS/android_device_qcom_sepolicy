@@ -99,3 +99,9 @@
 /data/misc/qvop(/.*)?      u:object_r:qvop_data_file:s0
 /data/misc/tloc(/.*)?      u:object_r:tlocd_data_file:s0
 /data/misc/qvr(/.*)?       u:object_r:qvrd_data_file:s0
+# Fingerprint device
+/dev/fpc1020 u:object_r:fpc1020_device:s0
+/data/fpc(/.*)?                        u:object_r:fpc_data_file:s0
+/data/fpc_images(/.*)?                        u:object_r:fpc_images_file:s0
+/sys/devices/soc/soc:fpc_fpc1020/irq   u:object_r:sysfs_fpc_irq:s0
+/system/bin/ifaadaemon	u:object_r:ifaadaemon_exec:s0

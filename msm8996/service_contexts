@@ -26,3 +26,5 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 android.apps.IQvopService             u:object_r:iqvop_service:s0
+ifaadaemon    u:object_r:ifaadaemon:s0
+OEMExService                          u:object_r:oem_service:s0
