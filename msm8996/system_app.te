@@ -26,3 +26,8 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 binder_call(system_app, qvop)
+allow system_app fingerprintd_data_file:dir { write remove_name search } ;
+allow system_app fingerprintd_data_file:file { getattr unlink } ;
+allow dumpstate fingerprintd:binder { call } ;
+allow fingerprintd dumpstate:fd { use } ;
+allow fingerprintd dumpstate:unix_stream_socket { read write } ;
