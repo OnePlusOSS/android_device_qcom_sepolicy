@@ -111,6 +111,12 @@ binder_call(mmi,surfaceflinger)
 unix_socket_connect(mmi, sensors, sensors);
 allow mmi sensors_device:chr_file r_file_perms;
 
+#fingerprint Cases
+allow mmi qfp-daemon:fd use;
+allow mmi iqfp_service:service_manager find;
+binder_use(mmi);
+binder_call(mmi, qfp-daemon);
+
 #logcat
 domain_auto_trans(mmi, logcat_exec, logd);
 
