@@ -26,3 +26,4 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 type iqvop_service,   service_manager_type;
+type oem_service, app_api_service, system_server_service, service_manager_type;
