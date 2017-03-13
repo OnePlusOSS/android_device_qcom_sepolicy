@@ -27,3 +27,10 @@
 
 #Allow camera to work normally in VR mode
 binder_call(mm-qcamerad, qvrd)
+
+allow mm-qcamerad mpctl_socket:sock_file { write };
+allow mm-qcamerad perfd:unix_stream_socket { connectto };
+allow mm-qcamerad remosaic_service:service_manager { find };
+binder_call(mm-qcamerad, remosaic_daemon);
+
+allow mm-qcamerad permission_service:service_manager find;
