@@ -91,8 +91,9 @@
 /dev/block/bootdevice/by-name/misc              u:object_r:misc_block_device:s0
 #/dev/block/mmcblk0p13                          u:object_r:bootselect_device:s0
 /dev/block/zram0                                u:object_r:swap_block_device:s0
-/dev/block/bootdevice/by-name/dip               u:object_r:dip_device:s0
 /dev/block/bootdevice/by-name/mdtp              u:object_r:mdtp_device:s0
+/dev/block/bootdevice/by-name/mdtp_a            u:object_r:mdtp_device:s0
+/dev/block/bootdevice/by-name/mdtp_b            u:object_r:mdtp_device:s0
 /dev/block/bootdevice/by-name/logdump           u:object_r:logdump_partition:s0
 
 ###################################
@@ -329,7 +330,6 @@
 /data/misc/location(/.*)?                                           u:object_r:location_data_file:s0
 /data/misc/location/mq/location-mq-s                                u:object_r:location_socket:s0
 /data/misc/location/mq/alarm_svc                                    u:object_r:location_socket:s0
-/data/FTM_AP(/.*)?                                                  u:object_r:mmi_data_file:s0
 /data/misc/hbtp(/.*)?                                               u:object_r:hbtp_log_file:s0
 /data/misc/qlogd(/.*)?                                              u:object_r:qlogd_data_file:s0
 /data/usf(/.*)?                                                     u:object_r:usf_data_file:s0
@@ -371,6 +371,7 @@
 /persist/speccfg(/.*)?                                              u:object_r:regionalization_file:s0
 /persist/misc(/.*)?                                                 u:object_r:persist_misc_file:s0
 /persist/bms(/.*)?                                                  u:object_r:persist_bms_file:s0
+/persist/FTM_AP(/.*)?                                               u:object_r:mmi_data_file:s0
 
 ###################################
 # etc files
@@ -381,8 +382,3 @@
 # adsp files
 #
 /dsp(/.*)?                                                          u:object_r:adsprpcd_file:s0
-
-###################################
-# cache files
-#
-/cache/FTM_AP(/.*)?                                                  u:object_r:mmi_data_file:s0
