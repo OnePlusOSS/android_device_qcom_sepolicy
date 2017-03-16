@@ -1,4 +1,4 @@
-# Copyright (c) 2016, The Linux Foundation. All rights reserved.
+# Copyright (c) 2017, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -24,37 +24,27 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+type smcinvoke_daemon, domain;
+type smcinvoke_daemon_exec, exec_type, file_type;
 
-allow cameraserver camera_data_file:sock_file write;
-allow cameraserver gpu_device:chr_file rw_file_perms;
-allow cameraserver mm-qcamerad:unix_dgram_socket sendto;
+init_daemon_domain(smcinvoke_daemon)
 
-#interaction with mptcl and thermal sockets
-unix_socket_connect(cameraserver, mpctl, perfd)
-unix_socket_connect(cameraserver, thermal, thermal-engine)
+#Allow smcinvoke_daemon to use Binder IPC
+binder_use(smcinvoke_daemon)
 
-#Allow surfaceflinger access for camera preview
-allow cameraserver surfaceflinger:unix_stream_socket { read write };
+#Allow apps to interact with smcinvoke_daemon
+binder_call(smcinvoke_daemon, system_app)
 
-# allow cameraserver to communicate with sensors
-allow cameraserver sensors_device:chr_file rw_file_perms;
-unix_socket_connect(cameraserver, sensors, sensors);
-allow cameraserver system_server:unix_stream_socket { read write };
+#Mark smcinvoke_daemon as a Binder service domain
+binder_service(smcinvoke_daemon)
 
-#Allow read access to soc/msm-cam/video4linux/video0/name sysfs
-allow cameraserver sysfs:file r_file_perms;
+#Allow access to smcinvoke device
+allow smcinvoke_daemon smcinvoke_device:chr_file rw_file_perms;
 
-allow cameraserver persist_file:dir r_dir_perms;
-allow cameraserver camera_prop:property_service set;
-unix_socket_connect(cameraserver,property,init);
-allow cameraserver self:socket create_socket_perms;
-allow cameraserver sensors_persist_file:dir r_dir_perms;
-allow cameraserver sensors_persist_file:file r_file_perms;
-allow cameraserver graphics_device:dir r_dir_perms;
-allow cameraserver sensorservice_service:service_manager find;
-allow cameraserver system_file:dir r_dir_perms;
+#Allow access to firmware
+allow smcinvoke_daemon firmware_file:dir r_dir_perms;
+allow smcinvoke_daemon firmware_file:file r_file_perms;
 
-#Allows camera to call ADSP QDSP6 functionality
-allow cameraserver qdsp_device:chr_file r_file_perms;
-#allow cameraserver to access /dsp
-r_dir_file(cameraserver, adsprpcd_file);
+allow smcinvoke_daemon MinkBinderSvc:service_manager { add find };
+allow smcinvoke_daemon system_app:unix_stream_socket connectto;
+allow smcinvoke_daemon system_file:lnk_file getattr;
