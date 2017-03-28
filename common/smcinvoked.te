@@ -24,17 +24,27 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+type smcinvoke_daemon, domain;
+type smcinvoke_daemon_exec, exec_type, file_type;
 
-# Allow update_engine and update_engine_sideload (recovery) read/write on the
-# device-specific partitions it should update.
-allow update_engine_common {
-	custom_ab_block_device
-	xbl_block_device
-        boot_block_device
-	ssd_device
-	modem_block_device
-        system_block_device
-        root_block_device
-        mdtp_device
-}:blk_file rw_file_perms;
+init_daemon_domain(smcinvoke_daemon)
 
+#Allow smcinvoke_daemon to use Binder IPC
+binder_use(smcinvoke_daemon)
+
+#Allow apps to interact with smcinvoke_daemon
+binder_call(smcinvoke_daemon, system_app)
+
+#Mark smcinvoke_daemon as a Binder service domain
+binder_service(smcinvoke_daemon)
+
+#Allow access to smcinvoke device
+allow smcinvoke_daemon smcinvoke_device:chr_file rw_file_perms;
+
+#Allow access to firmware
+allow smcinvoke_daemon firmware_file:dir r_dir_perms;
+allow smcinvoke_daemon firmware_file:file r_file_perms;
+
+allow smcinvoke_daemon MinkBinderSvc:service_manager { add find };
+allow smcinvoke_daemon system_app:unix_stream_socket connectto;
+allow smcinvoke_daemon system_file:lnk_file getattr;
