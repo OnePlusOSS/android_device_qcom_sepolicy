@@ -39,6 +39,7 @@ allow system_app {
     dun_service
     # access to color service SDK
     color_service
+    qfp_proxy_service
 }:service_manager add;
 
 # access to perflock
