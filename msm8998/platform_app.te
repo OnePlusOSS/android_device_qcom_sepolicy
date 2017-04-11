@@ -27,3 +27,4 @@
 
 #for oemfs
 allow platform_app oemfs:lnk_file { read getattr };
+allow platform_app ifaadaemon_service:service_manager { find };

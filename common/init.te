@@ -37,3 +37,6 @@ allow init system_file:system module_load;
 
 #dontaudit non configfs usb denials
 dontaudit init sysfs:dir write;
+
+allow init input_device:chr_file { getattr };
+domain_trans(init, rootfs, dashd)

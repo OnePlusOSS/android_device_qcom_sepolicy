@@ -62,3 +62,4 @@ media.dolby_memoryservice                      u:object_r:audioserver_service:s0
 # DOLBY_END
 sms-sec                                        u:object_r:radio_service:s0
 MinkBinderSvc                                  u:object_r:MinkBinderSvc:s0
+OEMExService                                   u:object_r:oem_service:s0

@@ -30,3 +30,4 @@ regionalization                                       u:object_r:regionalization
 
 android.apps.IQvopService                             u:object_r:iqvop_service:s0
 audio.vrservice                                       u:object_r:audioserver_service:s0
+ifaadaemon    u:object_r:ifaadaemon_service:s0

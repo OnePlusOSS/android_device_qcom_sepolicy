@@ -263,6 +263,7 @@
 /system/bin/wifi_ftmd                           u:object_r:wifi_ftmd_exec:s0
 /system/vendor/bin/smcinvoked                   u:object_r:smcinvoke_daemon_exec:s0
 /system/bin/qdmastatsd                          u:object_r:qdmastatsd_exec:s0
+/system/bin/tloc_daemon                         u:object_r:tlocd_exec:s0
 ###################################
 # sysfs files
 #
@@ -339,6 +340,7 @@
 /data/misc/dts(/.*)?                                                u:object_r:dts_data_file:s0
 /data/misc/seemp(/.*)?                                              u:object_r:seemp_file:s0
 /data/misc/SelfHost(/.*)?                                           u:object_r:RIDL_data_file:s0
+/data/misc/OTA(/.*)?                                                u:object_r:RIDL_data_file:s0
 /data/misc/qti-logkit(/.*)?                                         u:object_r:qti_logkit_priv_data_file:s0
 /data/misc/qti-logkit/shared-public(/.*)?                           u:object_r:qti_logkit_pub_data_file:s0
 /data/misc/qti-logkit/logdata(/.*)?                                 u:object_r:qti_logkit_pub_data_file:s0
@@ -357,6 +359,7 @@
 /data/app-regional(/.*)?                                            u:object_r:regionalization_data_file:s0
 /data/misc/qdma(/.*)?                                               u:object_r:qdma_data_file:s0
 /data/misc/qdmastats(/.*)?                                          u:object_r:qdma_data_file:s0
+/data/misc/tloc(/.*)?                                               u:object_r:tlocd_data_file:s0
 ###################################
 # persist files
 #
