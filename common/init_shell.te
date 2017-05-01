@@ -68,6 +68,7 @@ allow qti_init_shell {
     config_prop
     sensors_prop
     msm_irqbalance_prop
+    msm_irqbl_sdm630_prop
     ipacm_prop
     ipacm-diag_prop
     qti_prop
