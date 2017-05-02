@@ -27,6 +27,3 @@
 
 #for oemfs
 allow system_app oemfs:lnk_file { read getattr };
-
-# allow RIDL for enable sysfs node
-allow system_app sysfs_emmc_dload:file rw_file_perms;
