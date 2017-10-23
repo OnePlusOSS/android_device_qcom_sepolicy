@@ -1,0 +1,41 @@
+type ifaadaemon, domain;
+type ifaadaemon_exec, exec_type, file_type;
+
+# ifaadaemon
+init_daemon_domain(ifaadaemon)
+binder_service(ifaadaemon)
+binder_use(ifaadaemon)
+
+# need to find KeyStore and add self
+#allow ifaadaemon ifaadaemon:service_manager { add find };
+
+# allow HAL module to read dir contents
+#allow ifaadaemon ifaadaemon_data_file:file { create_file_perms };
+
+# allow HAL module to read/write/unlink contents of this dir
+#allow ifaadaemon ifaadaemon_data_file:dir rw_dir_perms;
+
+# Need to add auth tokens to KeyStore
+#use_keystore(ifaadaemon)
+#allow ifaadaemon keystore:keystore_key { add_auth };
+
+# For permissions checking
+binder_call(ifaadaemon, system_server);
+allow ifaadaemon permission_service:service_manager find;
+
+allow system_app ifaadaemon:dir {getattr search};
+allow system_app ifaadaemon:file {read open};
+
+allow untrusted_app ifaadaemon_service:service_manager { find }; 
+allow untrusted_app ifaadaemon:binder {call};
+
+allow ifaadaemon tee_device:chr_file {read write open ioctl};
+
+allow ifaadaemon firmware_file:dir {search};
+
+allow ifaadaemon firmware_file:file {read open getattr};
+
+type ifaadaemon_service, service_manager_type;
+allow ifaadaemon ifaadaemon_service:service_manager add;
+
+allow ifaadaemon ion_device:chr_file {read open ioctl};
