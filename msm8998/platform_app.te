@@ -27,3 +27,7 @@
 
 #for oemfs
 allow platform_app oemfs:lnk_file { read getattr };
+allow platform_app ifaadaemon_service:service_manager { find };
+allow platform_app fingerprintd_service:service_manager { find };
+allow platform_app fingerprintd:binder { call transfer };
+allow fingerprintd platform_app:binder { call };

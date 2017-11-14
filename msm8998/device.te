@@ -34,3 +34,4 @@ type xbl_block_device, dev_type;
 type gpt_block_device, dev_type;
 type modem_block_device, dev_type;
 type persist_block_device, dev_type;
+type fp_device, dev_type;

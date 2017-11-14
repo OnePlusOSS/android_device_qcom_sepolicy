@@ -40,3 +40,6 @@ dontaudit init sysfs:dir write;
 
 #rawdump
 allow init rawdump_block_device:blk_file setattr;
+
+allow init input_device:chr_file { getattr };
+domain_trans(init, rootfs, dashd)

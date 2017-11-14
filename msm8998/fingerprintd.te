@@ -1,0 +1,35 @@
+# Fingerprint device
+allow fingerprintd fpc1020_device:chr_file rw_file_perms;
+allow fingerprintd sysfs:file rw_file_perms;
+allow fingerprintd system_data_file:dir w_dir_perms;
+
+# Only for debug image usage,so mask it when use image collection tool setenforce 0 manually 
+allow fingerprintd fpc_images_file:dir { open read write create unlink rename getattr remove_name add_name search};
+allow fingerprintd fpc_images_file:file { open read write create unlink rename getattr append setattr };
+allow fingerprintd persist_file:dir create_dir_perms;
+allow fingerprintd persist_file:file create_file_perms;
+allow fingerprintd persist_drm_file:dir create_dir_perms;
+allow fingerprintd persist_drm_file:file create_file_perms;
+#allow fingerprintd tee_device:chr_file { read write ioctl open };
+allow fingerprintd fpc_data_file:dir { read write create unlink rename getattr remove_name add_name search};
+allow fingerprintd fpc_data_file:file { read write create unlink rename getattr };
+allow fingerprintd fpc_data_file:sock_file { read write create unlink };
+allow system_app fpc_data_file:sock_file { read write create unlink };
+allow system_app fpc_data_file:dir { read write create unlink rename getattr remove_name add_name search};
+allow fingerprintd sysfs_fpc_irq:file rw_file_perms;
+allow fingerprintd sysfs_wake_lock:file { open write };
+#allow fingerprintd firmware_file:file { open read getattr };
+
+#unix_socket_connect(system_app, fpce, fingerprintd)
+allow system_app fingerprintd:fd use;
+allow system_app fingerprintd:unix_stream_socket rw_socket_perms;
+
+allow system_app fingerprint_service:service_manager add;
+
+# Access to tee_device
+allow fingerprintd tee_device:chr_file rw_file_perms;
+
+#allow fingerprintd oem_prop:file {read open getattr};
+
+# Access to firmware_file
+r_dir_file(fingerprintd, firmware_file)

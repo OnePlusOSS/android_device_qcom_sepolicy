@@ -1,0 +1,50 @@
+#type fpc1020_device, dev_type;
+#type sysfs_capture_mode, sysfs_type;
+#type sysfs_capture_count, sysfs_type;
+#type sysfs_capture_settings_mux, sysfs_type;
+#type sysfs_adc_gain, sysfs_type;
+#type sysfs_adc_shift, sysfs_type;
+#type sysfs_capture_col_groups, sysfs_type;
+#type sysfs_capture_col_start, sysfs_type;
+#type sysfs_capture_row_count, sysfs_type;
+#type sysfs_capture_row_start, sysfs_type;
+#type sysfs_pxl_ctrl, sysfs_type;
+
+
+#type sysfs_clock_enable, sysfs_type;
+#type sysfs_ap_tz_switch, sysfs_type;
+
+#type fingerprints_service,         service_manager_type;
+#allow domain fpc1020_device:chr_file rw_file_perms;
+#allow domain sysfs_capture_mode:file {rw_file_perms setattr};
+#allow domain sysfs_capture_count:file {rw_file_perms setattr};
+#allow domain sysfs_capture_settings_mux:file {rw_file_perms setattr};
+#allow domain sysfs_adc_gain:file {rw_file_perms setattr};
+#allow domain sysfs_adc_shift:file {rw_file_perms setattr};
+#allow domain sysfs_capture_col_groups:file {rw_file_perms setattr};
+#allow domain sysfs_capture_col_start:file {rw_file_perms setattr};
+#allow domain sysfs_capture_row_count:file {rw_file_perms setattr};
+#allow domain sysfs_capture_row_start:file {rw_file_perms setattr};
+#allow domain sysfs_pxl_ctrl:file {rw_file_perms setattr};
+
+#allow domain sysfs_clock_enable:file {rw_file_perms setattr};
+#allow domain sysfs_ap_tz_switch:file {rw_file_perms setattr};
+
+#allow system_app tee_device:chr_file rw_file_perms;
+#allow untrusted_app tee_device:chr_file rw_file_perms;
+
+#allow system_app fingerprints_service:service_manager add;
+
+#for oneplus3
+# Fingerprint device
+type fpc1020_device, dev_type;
+type fpc_data_file, file_type, data_file_type;
+type fpc_images_file, file_type, data_file_type;
+type sysfs_fpc_irq, fs_type, sysfs_type;
+
+# add for fingerprint android M extension
+#allow system_app fingerprint_service:service_manager add;
+
+# sysfs directory file
+type sysfs_fingerprintd, fs_type, sysfs_type;
+
