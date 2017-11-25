@@ -47,3 +47,4 @@ wigig                                          u:object_r:wigig_service:s0
 # DOLBY_START
 media.dolby_memoryservice                      u:object_r:audioserver_service:s0
 # DOLBY_END
+OEMExService                                   u:object_r:oem_service:s0

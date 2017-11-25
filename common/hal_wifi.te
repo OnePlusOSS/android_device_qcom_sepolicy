@@ -36,3 +36,7 @@ allow hal_wifi proc_modules:file r_file_perms;
 allow hal_wifi_default location_data_file:dir search;
 allow hal_wifi_default location:unix_stream_socket connectto;
 allow hal_wifi_default location_socket:sock_file write;
+
+allow hal_wifi_default oem_data_file:file { open read write };
+allow hal_wifi_default persist_file:dir { search };
+allow hal_wifi_default persist_file:file { open write getattr };
