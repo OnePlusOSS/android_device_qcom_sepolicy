@@ -1,0 +1,29 @@
+type hal_cameraHIDL_default, domain;
+
+type hal_cameraHIDL_default_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_cameraHIDL_default)
+
+binder_call(platform_app, hal_cameraHIDL_default)
+binder_call(cameraserver, hal_cameraHIDL_default)
+binder_call(hal_cameraHIDL_default, hal_perf_default)
+allow hal_cameraHIDL_default hal_perf_hwservice:hwservice_manager find;
+allow hal_cameraHIDL_default hwservicemanager_prop:file { read open getattr };
+hwbinder_use(hal_cameraHIDL_default)
+add_hwservice(hal_cameraHIDL_default, hal_cameraHIDL_hwservice)
+allow hal_cameraHIDL_default tee_device:chr_file { open read write ioctl};
+allow hal_cameraHIDL_default ion_device:chr_file {read open ioctl};
+allow hal_cameraHIDL_default firmware_file:file {read open getattr};
+allow hal_cameraHIDL_default firmware_file:dir {search};
+allow platform_app hal_cameraHIDL_hwservice:hwservice_manager { find };
+
+allow cameraserver hal_cameraHIDL_default:hwservice_manager { find };
+allow cameraserver hal_cameraHIDL_default:binder { call };
+allow cameraserver hal_cameraHIDL_hwservice:hwservice_manager { find };
+
+allow hal_camera_default hal_cameraHIDL_default:hwservice_manager { find };
+allow hal_camera_default hal_cameraHIDL_default:binder { call };
+allow hal_camera_default hal_cameraHIDL_hwservice:hwservice_manager { find };
+
+allow hal_cameraHIDL_default vendor_camera_data_file:dir { read write open create_file_perms rw_file_perms search add_name create remove_name };
+allow hal_cameraHIDL_default vendor_camera_data_file:file { read write open getattr create setattr rw_file_perms create_file_perms };
+

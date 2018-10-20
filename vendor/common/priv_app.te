@@ -27,3 +27,6 @@
 
 hal_client_domain(priv_app, hal_perf)
 get_prop(priv_app, vendor_camera_prop)
+allow priv_app hal_cameraHIDL_default:hwservice_manager { find };
+allow priv_app hal_cameraHIDL_default:binder { call };
+allow priv_app hal_cameraHIDL_hwservice:hwservice_manager { find };

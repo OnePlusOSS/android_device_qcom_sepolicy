@@ -571,6 +571,7 @@
 /data/vendor/bluetooth(/.*)?                                        u:object_r:vendor_bt_data_file:s0
 /data/vendor/scve(/.*)?                                             u:object_r:vendor_scve_data_file:s0
 /data/vendor/fm(/.*)?                                               u:object_r:vendor_fm_data_file:s0
+/data/vendor/oemnvitems(/.*)?                                       u:object_r:vendor_data_file:s0
 
 ###################################
 # persist files
@@ -729,3 +730,5 @@
 
 #Android NN Driver
 /(vendor|system/vendor)/bin/hw/android\.hardware\.neuralnetworks@1\.1-service-qti u:object_r:hal_neuralnetworks_default_exec:s0
+#Camera HIDL
+/(vendor|system/vendor)/bin/hw/vendor\.oneplus\.camera\.CameraHIDL@1\.0-service  u:object_r:hal_cameraHIDL_default_exec:s0
